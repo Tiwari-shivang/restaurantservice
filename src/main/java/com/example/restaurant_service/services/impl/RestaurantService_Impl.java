@@ -46,9 +46,9 @@ public class RestaurantService_Impl implements RestaurantService {
 
     @Override
     public ProfileCompletion getCompletion(String id){
-        if(addressRepo.getByRestaurantId(UUID.fromString(id)) != null){
-            if(categoryRepo.getByRestaurantId(UUID.fromString(id)) != null){
-                if(menuRepo.getByRestaurantId(UUID.fromString(id)) != null){
+        if(!addressRepo.getByRestaurantId(UUID.fromString(id)).isEmpty()){
+            if(!categoryRepo.getByRestaurantId(UUID.fromString(id)).isEmpty()){
+                if(!menuRepo.getByRestaurantId(UUID.fromString(id)).isEmpty()){
                     return new ProfileCompletion(100.00, true, true, true);
                 }
                 else{
